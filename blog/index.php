@@ -15,6 +15,6 @@ try{
 }*/require 'blog.php';
 
 $pdo = new blog();
-
-$pdo->inserir();
+$pdo->listar();
+// echo "Insert,linhas afetadas:".$pdo->inserir();
 ?>

@@ -5,7 +5,7 @@ class blog{
     private $hostDb = "mysql:host=127.0.0.1;dbname=orientado";
     private $user = "root";
     private $pass = "password";
-
+    private $pdo;
 function __construct(){
 
 $this->pdo = new PDO("mysql:host=127.0.0.1;dbname=orientado","root","password");
@@ -16,7 +16,8 @@ $this->pdo = new PDO("mysql:host=127.0.0.1;dbname=orientado","root","password");
 
     public function inserir(){
 
-            $prepare = $this->pdo->prepare("insert into blog(nome) values('caralhooooooooooooo')");
+            $prepare = $this->pdo->prepare("insert into blog(nome) values(?)");
+            $prepare->bindParam(1,$_GET['nome']);
             $prepare->execute();
             
        
@@ -25,6 +26,9 @@ $this->pdo = new PDO("mysql:host=127.0.0.1;dbname=orientado","root","password");
     }
 
     public function listar(){
+        $sql = "select * from blog";
+        $this->pdo->query($sql);
+        
 
     }
 
