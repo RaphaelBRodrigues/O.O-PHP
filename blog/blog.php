@@ -27,8 +27,11 @@ $this->pdo = new PDO("mysql:host=127.0.0.1;dbname=orientado","root","password");
 
     public function listar(){
         $sql = "select * from blog";
-        $this->pdo->query($sql);
-        
+
+        foreach($this->pdo->query($sql) as $blog){
+            echo $blog['nome']."\n";
+        }
+
 
     }
 
